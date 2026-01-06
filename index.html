@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shear Force Diagram Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>SFD Generator</h1>
+            <p>Distributed Load Analysis</p>
+        </header>
+
+        <main>
+            <div class="controls-panel">
+                <div class="card input-group">
+                    <h2>Beam Configuration</h2>
+                    <div class="input-row">
+                        <label for="beamLength">Length (m)</label>
+                        <input type="number" id="beamLength" value="10" min="1" step="0.1">
+                    </div>
+                </div>
+
+                <div class="card input-group">
+                    <div class="card-header">
+                        <h2>Supports</h2>
+                        <button id="addSupportBtn" class="icon-btn" title="Add Support">+</button>
+                    </div>
+                    <div class="list-header supports-header">
+                        <span>Position (m)</span>
+                        <span></span>
+                    </div>
+                    <div id="supportsList" class="dynamic-list">
+                        <!-- Supports will be added here -->
+                    </div>
+                    <small class="hint">Default: Pin at 0, Roller at L</small>
+                </div>
+
+                <div class="card input-group">
+                    <div class="card-header">
+                        <h2>Point Loads</h2>
+                        <button id="addPointLoadBtn" class="icon-btn" title="Add Point Load">+</button>
+                    </div>
+                    <div class="list-header point-loads-header">
+                        <span>Pos (m)</span>
+                        <span>Load (kN)</span>
+                        <span></span>
+                    </div>
+                    <div id="pointLoadsList" class="dynamic-list">
+                        <!-- Point Loads will be added here -->
+                    </div>
+                </div>
+
+                <div class="card input-group">
+                    <div class="card-header">
+                        <h2>Distributed Loads (UDL)</h2>
+                        <button id="addLoadBtn" class="icon-btn" title="Add Load">+</button>
+                    </div>
+                    <div class="list-header distributed-loads-header">
+                        <span>Start (m)</span>
+                        <span>End (m)</span>
+                        <span>Start (kN/m)</span>
+                        <span>End (kN/m)</span>
+                        <span></span>
+                    </div>
+                    <div id="loadsList" class="dynamic-list">
+                        <!-- Loads will be added here -->
+                    </div>
+                </div>
+
+                <button id="calculateBtn" class="primary-btn">Generate Diagram</button>
+            </div>
+
+            <div class="visualization-panel">
+                <div class="canvas-container">
+                    <canvas id="sfdCanvas"></canvas>
+                </div>
+                <div id="resultsSummary" class="results-card">
+                    <h3>Reactions</h3>
+                    <div id="reactionsOutput"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

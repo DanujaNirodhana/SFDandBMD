@@ -1,0 +1,304 @@
+:root {
+    --bg-dark: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --primary: #3b82f6;
+    --primary-glow: #60a5fa;
+    --accent: #10b981;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: rgba(148, 163, 184, 0.2);
+    --font-family: 'Outfit', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+    overflow-x: hidden;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.05em;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 1000px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+}
+
+.input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+input {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: var(--text-main);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+.icon-btn {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: background 0.2s;
+}
+
+.icon-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+}
+
+.remove-btn {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    margin-left: 0.5rem;
+}
+
+.remove-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.dynamic-item {
+    margin-bottom: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.dynamic-item input {
+    width: 100%;
+}
+
+/* Grid Layouts for Tables */
+.supports-header,
+#supportsList .dynamic-item {
+    display: grid;
+    grid-template-columns: 1fr 32px;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.point-loads-header,
+#pointLoadsList .dynamic-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 32px;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.distributed-loads-header,
+#loadsList .dynamic-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 32px;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.list-header {
+    margin-bottom: 0.5rem;
+    padding-left: 2px;
+}
+
+.list-header span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.primary-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-glow));
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(59, 130, 246, 0.4);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.visualization-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.canvas-container {
+    background: var(--bg-card);
+    /* Keep it dark glass */
+    border: 1px solid var(--border);
+    /* Subtle border */
+    border-radius: 16px;
+    padding: 1rem;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    /* We will draw the background in canvas to ensure contrast */
+}
+
+.results-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+#reactionsOutput {
+    font-family: 'Courier New', monospace;
+    color: var(--accent);
+    line-height: 1.6;
+}
+
+.hint {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
